@@ -33,11 +33,14 @@ dreamForm.addEventListener('submit', async (e) => {
             body: JSON.stringify({ dream_text: dream }),
         });
 
+        const data = await response.json();
 
         if (!response.ok) {
             showErrorMessage(data.error || 'Failed to process your dream. Please try again.');
             return;
         }
+
+        const newDream = data;
         
         // Clear form
         dreamText.value = '';
@@ -47,7 +50,7 @@ dreamForm.addEventListener('submit', async (e) => {
 
     } catch (error) {
         console.error('Error:', error);
-        showErrorMessage('AI service temporarily unavailable. Please try again later.');
+        showErrorMessage('Network error. Please check your connection and try again.');
     } finally {
         // Re-enable form
         submitBtn.disabled = false;

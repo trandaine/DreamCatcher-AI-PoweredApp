@@ -2,7 +2,7 @@
 export function validateText(text) {
   // Type check
   if (typeof text !== 'string') {
-    return { valid: false, error: 'Dream text must be a string' };
+    return { valid: false, error: 'Văn bản giấc mơ phải là một chuỗi ký tự.' };
   }
 
   // Sanitization: trim whitespace
@@ -10,12 +10,12 @@ export function validateText(text) {
 
   // Required field check
   if (trimmed.length === 0) {
-    return { valid: false, error: 'Dream text is required' };
+    return { valid: false, error: 'Văn bản giấc mơ là bắt buộc.' };
   }
 
   // Length limit check
   if (trimmed.length > 5000) {
-    return { valid: false, error: 'Dream text must be less than 5000 characters' };
+    return { valid: false, error: 'Văn bản giấc mơ phải ít hơn 5000 ký tự.' };
   }
 
   return { valid: true, value: trimmed };
