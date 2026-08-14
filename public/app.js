@@ -47,7 +47,7 @@ dreamForm.addEventListener('submit', async (e) => {
 
     } catch (error) {
         console.error('Error:', error);
-        showErrorMessage('Network error. Please check your connection and try again.');
+        showErrorMessage('AI service temporarily unavailable. Please try again later.');
     } finally {
         // Re-enable form
         submitBtn.disabled = false;
