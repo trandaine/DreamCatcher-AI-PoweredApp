@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: process.env.AI_URL
-  });
+});
 
 // Call OpenAI API for dream interpretation
 export async function getDreamInterpretation(dreamText) {
@@ -15,11 +15,14 @@ export async function getDreamInterpretation(dreamText) {
   try {
     const message = await openai.chat.completions.create({
       model,
-      max_tokens: 512,
+      max_tokens: 700,
       messages: [
         {
           role: 'system',
-          content: 'You are a thoughtful dream interpreter. Be insightful but gentle, and consider common dream symbolism. Keep your interpretation to 2-3 paragraphs.'
+          content: 'You are a thoughtful, empathetic dream interpreter. Follow these core rules:\n' +
+            '1. Language Matching: Detect the user\'s input language and write the entire response strictly in that same language.\n' +
+            '2. Tone & Insight: Provide gentle, meaningful interpretations drawing on psychological and common dream symbolism without making absolute claims.\n' +
+            '3. Format: Structure the interpretation clearly within 2-3 paragraphs.'
         },
         {
           role: 'user',

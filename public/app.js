@@ -78,7 +78,7 @@ async function loadDreams() {
 // Display dreams in the DOM
 function displayDreams(dreams) {
     if (dreams.length === 0) {
-        dreamsContainer.innerHTML = '<p class="empty">No dreams yet. Start by recording your first dream!</p>';
+        dreamsContainer.innerHTML = '<p class="empty">Chưa có giấc mơ nào cả. Hãy bắt đầu bằng cách ghi lại giấc mơ đầu tiên của bạn!</p>';
         return;
     }
 
@@ -92,17 +92,17 @@ function displayDreams(dreams) {
         <div class="dream-card" data-id="${dream.id}">
             <div class="dream-header">
                 <span class="dream-date">${formatDate(dream.created_at)}</span>
-                <button class="delete-btn">Delete</button>
+                <button class="delete-btn">Xoá</button>
             </div>
             <div class="dream-text">
-                <strong>Dream:</strong> ${escapeHtml(dream.dream_text)}
+                <strong>Giấc mơ:</strong> ${escapeHtml(dream.dream_text)}
             </div>
             <div class="interpretation">
-                <h3>💭 Interpretation</h3>
+                <h3>💭 Phiên dịch</h3>
                 <div class="interpretation-text interpretation-expandable" data-full="${interpretation}" data-truncated="${truncatedInterpretation}" data-expanded="false">
                     ${truncatedInterpretation}
                 </div>
-                ${shouldTruncate ? `<button class="read-more-btn">Read More</button>` : ''}
+                ${shouldTruncate ? `<button class="read-more-btn">Đọc thêm...</button>` : ''}
             </div>
         </div>
     `;
